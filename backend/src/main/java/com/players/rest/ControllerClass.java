@@ -3,11 +3,7 @@ package com.players.rest;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -42,6 +38,8 @@ public class ControllerClass {
 
 	@Autowired
 	playerService svc2;
+
+
 
 	@RequestMapping(value = "/createTeam", method = RequestMethod.POST)
 	public ResponseObject addTeam(@RequestBody TeamDTO msg) {
@@ -158,6 +156,14 @@ public class ControllerClass {
 		ros = svc2.convertNameToUpperCase();
 		return ros;
 	}
+
+	@GetMapping(value = "/fetchLiveScore")
+	public ResponseObject fetchLiveScore(@PathVariable Integer id){
+		ResponseObject responseObject = new ResponseObject();
+		return responseObject;
+	}
+
+
 
 }
 
